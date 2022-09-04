@@ -7,7 +7,6 @@ const board = (() => {
 
 const Player = (signature) => {
     const move = num => {
-        
         if (board.grid.at(num) == num) {
             board.grid.splice(num, 1, signature);
         } else {
