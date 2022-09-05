@@ -30,6 +30,8 @@ const cell6 = document.getElementById("cell-6");
 const cell7 = document.getElementById("cell-7");
 const cell8 = document.getElementById("cell-8");
 
+cell1.style.backgroundColor = "red";
+
 //this function fills in the game-board from "O" and "X" index values of board.grid
 function markUpGameBoard() {
     if (typeof board.grid.at(0) !=="number") {cell0.textContent = board.grid.at(0);}
@@ -74,15 +76,15 @@ function adjustBoardArray() {
         else {board.grid.splice(8, 1, 8);}
 }
 
+
 //add event listener to DOM that allows you to add X to board
-//cells.forEach(cell => {
+cells.forEach(cell => {
+    cell.addEventListener('click', function addX() {
+        cell.textContent = "X";
+        adjustBoardArray();
+    });
+});
 
-  //  cell.addEventListener('click', function addX() {
-
-    //    board.grid.at()
-
-    //});
-//});
 
 
 
