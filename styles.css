@@ -6,4 +6,8 @@ container {
 
 .cell {
     border: red solid;
+    font-size: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
