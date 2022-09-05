@@ -32,15 +32,15 @@ const cell8 = document.getElementById("cell-8");
 
 
 function markUpBoard() {
-    cell0.textContent = board.grid.at(0);
-    cell1.textContent = board.grid.at(1);
-    cell2.textContent = board.grid.at(2);
-    cell3.textContent = board.grid.at(3);
-    cell4.textContent = board.grid.at(4);
-    cell5.textContent = board.grid.at(5);
-    cell6.textContent = board.grid.at(6);
-    cell7.textContent = board.grid.at(7);
-    cell8.textContent = board.grid.at(8);
+    if (typeof board.grid.at(0) !== "number") {cell0.textContent = board.grid.at(0);}
+    if (typeof board.grid.at(1) !== "number") {cell1.textContent = board.grid.at(1);}
+    if (typeof board.grid.at(2) !=="number") {cell2.textContent = board.grid.at(2);}
+    if (typeof board.grid.at(3) !=="number") {cell3.textContent = board.grid.at(3);}
+    if (typeof board.grid.at(4) !=="number") {cell4.textContent = board.grid.at(4);}
+    if (typeof board.grid.at(5) !=="number") {cell5.textContent = board.grid.at(5);}
+    if (typeof board.grid.at(6) !=="number") {cell6.textContent = board.grid.at(6);}
+    if (typeof board.grid.at(7) !=="number") {cell7.textContent = board.grid.at(7);}
+    if (typeof board.grid.at(8) !=="number") {cell8.textContent = board.grid.at(8);}
 } markUpBoard();
 
 
