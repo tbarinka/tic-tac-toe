@@ -84,12 +84,51 @@ const xPlayer = Player("X");
 //Begin oPlayer's turn
 //etc.
 
+function checkWinner() {
+    if (cell0.textContent && cell1.textContent && cell2.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell3.textContent && cell4.textContent && cell5.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell6.textContent && cell7.textContent && cell8.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell0.textContent && cell3.textContent && cell6.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell1.textContent && cell4.textContent && cell7.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell2.textContent && cell5.textContent && cell8.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell0.textContent && cell4.textContent && cell8.textContent == "X") {
+        console.log("PlayerX wins!");
+    } else if (cell6.textContent && cell4.textContent && cell2.textContent == "X") {
+        console.log("PlayerX wins!");
+    }
+
+    if (cell0.textContent && cell1.textContent && cell2.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell3.textContent && cell4.textContent && cell5.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell6.textContent && cell7.textContent && cell8.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell0.textContent && cell3.textContent && cell6.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell1.textContent && cell4.textContent && cell7.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell2.textContent && cell5.textContent && cell8.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell0.textContent && cell4.textContent && cell8.textContent == "O") {
+        console.log("PlayerO wins!");
+    } else if (cell6.textContent && cell4.textContent && cell2.textContent == "O") {
+        console.log("PlayerO wins!");
+    }
+}
+
 function xMove() {
     cells.forEach(cell => {
         if (cell.textContent == "") {
             cell.addEventListener('click', function() {
                 cell.textContent = "X"
                 adjustBoardArray();
+                checkWinner();
                 oMove();
             }, {once : true});
         } 
@@ -102,6 +141,7 @@ function oMove() {
             cell.addEventListener('click', function() {
                 cell.textContent = "O"
                 adjustBoardArray();
+                checkWinner();
                 xMove();
             }, {once : true});
         } 
