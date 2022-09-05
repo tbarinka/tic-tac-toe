@@ -1,0 +1,9 @@
+container {
+    display: grid;
+    grid-template: 150px 150px 150px / 150px 150px 150px;
+    gap: 4px;
+}
+
+.cell {
+    border: red solid;
+}

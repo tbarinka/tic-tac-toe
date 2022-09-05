@@ -1,5 +1,5 @@
 const board = (() => {
-    const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    const grid = [0, "X", "X", 3, 4, 5, "O", 7, 8];
     return {
         grid
     };
@@ -17,6 +17,8 @@ const Player = (signature) => {
 }
 const oPlayer = Player("O");
 const xPlayer = Player("X");
+
+//write a function that will fill cells of tic-tac-toe board with appropraite values
 
 
 
