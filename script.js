@@ -92,19 +92,7 @@ function xMove() {
                 adjustBoardArray();
                 oMove();
             }, {once : true});
-        } else if (cell.textContent == "O") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "O"
-                adjustBoardArray();
-                xMove();
-            }, {once : true});
-        } else if (cell.textContent == "X") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "X"
-                adjustBoardArray();
-                xMove();
-            }, {once : true});
-        }
+        } 
     }); 
 } xMove();
 
@@ -116,18 +104,6 @@ function oMove() {
                 adjustBoardArray();
                 xMove();
             }, {once : true});
-        } else if (cell.textContent == "X") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "X"
-                adjustBoardArray();
-                oMove();
-            }, {once : true});
-        } else if (cell.textContent == "O") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "O"
-                adjustBoardArray();
-                oMove();
-            }, {once : true});
-        }
+        } 
     }); 
 }
