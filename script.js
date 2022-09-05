@@ -1,22 +1,3 @@
-const board = (() => {
-    const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    return {
-        grid
-    };
-})();
-
-const Player = (signature) => {
-    const move = num => {
-        if (board.grid.at(num) == num) {
-            board.grid.splice(num, 1, signature);
-        } else {
-            return
-        }
-    }
-    return {move}
-}
-const oPlayer = Player("O");
-const xPlayer = Player("X");
 
 //write a function that will fill cells of tic-tac-toe board with appropraite values
 const cells = document.querySelectorAll(".cell")
@@ -30,7 +11,12 @@ const cell6 = document.getElementById("cell-6");
 const cell7 = document.getElementById("cell-7");
 const cell8 = document.getElementById("cell-8");
 
-cell1.style.backgroundColor = "red";
+const board = (() => {
+    const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+    return {
+        grid
+    };
+})();
 
 //this function fills in the game-board from "O" and "X" index values of board.grid
 function markUpGameBoard() {
@@ -77,13 +63,56 @@ function adjustBoardArray() {
 }
 
 
-//add event listener to DOM that allows you to add X to board
-cells.forEach(cell => {
-    cell.addEventListener('click', function addX() {
-        cell.textContent = "X";
-        adjustBoardArray();
+const Player = (signature) => {
+    const move = num => {
+        if (board.grid.at(num) == num) {
+            board.grid.splice(num, 1, signature);
+            markUpGameBoard();
+        } else {
+            return
+        }
+    }
+    return {move}
+}
+const oPlayer = Player("O");
+const xPlayer = Player("X");
+
+//Show that it's X Player's turn
+//Allow X Player to pick a cell
+//Click Cell --> xPlayer.move(cell#)
+//End X Player's turn
+//Begin oPlayer's turn
+//etc.
+
+function xMove() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            cell.textContent = "X"
+            adjustBoardArray();
+            oMove();
+        });
     });
-});
+}; xMove();
+
+function oMove() {
+    cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            cell.textContent = "O"
+            adjustBoardArray();
+            xMove();
+        });
+    });
+}; 
+
+
+
+//add event listener to DOM that allows you to add X to board
+//cells.forEach(cell => {
+//    cell.addEventListener('click', function() {
+//        cell.textContent = "X";
+//        adjustBoardArray();
+//    });
+//});
 
 
 
@@ -95,4 +124,3 @@ cells.forEach(cell => {
     //move(gridNumber) = mark grid number with proprietary marker
         //(move --> (gridNumber is already taken --> try again)
         //(move --> (three in a row --> win))
-
