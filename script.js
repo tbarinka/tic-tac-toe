@@ -86,41 +86,48 @@ const xPlayer = Player("X");
 
 function xMove() {
     cells.forEach(cell => {
-        cell.addEventListener('click', function() {
-            cell.textContent = "X"
-            adjustBoardArray();
-            oMove();
-        });
-    });
-}; xMove();
+        if (cell.textContent == "") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "X"
+                adjustBoardArray();
+                oMove();
+            }, {once : true});
+        } else if (cell.textContent == "O") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "O"
+                adjustBoardArray();
+                xMove();
+            }, {once : true});
+        } else if (cell.textContent == "X") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "X"
+                adjustBoardArray();
+                xMove();
+            }, {once : true});
+        }
+    }); 
+} xMove();
 
 function oMove() {
     cells.forEach(cell => {
-        cell.addEventListener('click', function() {
-            cell.textContent = "O"
-            adjustBoardArray();
-            xMove();
-        });
-    });
-}; 
-
-
-
-//add event listener to DOM that allows you to add X to board
-//cells.forEach(cell => {
-//    cell.addEventListener('click', function() {
-//        cell.textContent = "X";
-//        adjustBoardArray();
-//    });
-//});
-
-
-
-
-
-
-//create a player factory function
-//add the following to factory function:
-    //move(gridNumber) = mark grid number with proprietary marker
-        //(move --> (gridNumber is already taken --> try again)
-        //(move --> (three in a row --> win))
+        if (cell.textContent == "") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "O"
+                adjustBoardArray();
+                xMove();
+            }, {once : true});
+        } else if (cell.textContent == "X") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "X"
+                adjustBoardArray();
+                oMove();
+            }, {once : true});
+        } else if (cell.textContent == "O") {
+            cell.addEventListener('click', function() {
+                cell.textContent = "O"
+                adjustBoardArray();
+                oMove();
+            }, {once : true});
+        }
+    }); 
+}
