@@ -1,13 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+}
+#turn-info {
+    margin-top: 30px;
+    font-size: 40px;
+}
 container {
     display: grid;
     grid-template: 150px 150px 150px / 150px 150px 150px;
     gap: 4px;
+    justify-content: center;
+    align-content: center;
 }
-
 .cell {
     border: red solid;
     font-size: 135px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#score-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#score-card > div {
+    display: flex;
+    gap: 30px;
 }

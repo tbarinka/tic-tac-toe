@@ -11,6 +11,8 @@ const cell6 = document.getElementById("cell-6");
 const cell7 = document.getElementById("cell-7");
 const cell8 = document.getElementById("cell-8");
 
+const turnInfo = document.getElementById("turn-info");
+
 const board = (() => {
     const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     return {
@@ -129,6 +131,7 @@ function xMove() {
                 adjustBoardArray();
                 checkWinner();
                 oMove();
+                turnInfo.textContent = "Player O's Turn"
             }, {once : true});
         } 
     }); 
@@ -142,6 +145,7 @@ function oMove() {
                 adjustBoardArray();
                 checkWinner();
                 xMove();
+                turnInfo.textContent = "Player X's Turn"
             }, {once : true});
         } 
     }); 
