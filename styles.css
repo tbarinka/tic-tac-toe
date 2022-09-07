@@ -30,8 +30,8 @@ container {
     font-size: 80px;
     border: solid black;
     padding: 30px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     border-radius: 10px;
     visibility: hidden;
 }

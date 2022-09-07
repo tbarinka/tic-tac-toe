@@ -41,6 +41,7 @@ function resetBoard() {
         adjustBoardArray();
     });
     winnerInfo.style.visibility = 'hidden';
+    xMove();
 }
 reset.addEventListener('click', resetBoard);
 
@@ -150,32 +151,31 @@ function checkWinner() {
     }
 }
 
-function xMove() {
-    cells.forEach(cell => {
-        if (cell.textContent == "") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "X"
-                adjustBoardArray();
-                checkWinner();
-                oMove();
-                turnInfo.textContent = "Player O's Turn"
-            }, {once : true});
-        } 
-    }); 
-} xMove();
+cells.forEach(cell => {
+    cell.addEventListener('click', xMove);
+    function xMove() {
+        cell.textContent = "X"
+        adjustBoardArray();
+        checkWinner();
+        cells.forEach(cell => {
+            cell.removeEventListener('click', xMove);
+        });
+        turnInfo.textContent = "Player O's Turn";
+    }
+   // function oMove() {
+    //    cell.textContent = "O"
+   //     adjustBoardArray();
+   //     checkWinner();
+   //     turnInfo.textContent = "Player X's Turn";
+  //      cell.removeEventListener('click', oMove);
+   //     cell.addEventListener('click', xMove);
+        //cells.forEach(cell => {
+        //    cell.removeEventListener('click', oMove);
+        //    cell.addEventListener('click', xMove);
+        //})
+   // }
 
-function oMove() {
-    cells.forEach(cell => {
-        if (cell.textContent == "") {
-            cell.addEventListener('click', function() {
-                cell.textContent = "O"
-                adjustBoardArray();
-                checkWinner();
-                xMove();
-                turnInfo.textContent = "Player X's Turn"
-            }, {once : true});
-        } 
-    }); 
-}
+});
+
 
 
