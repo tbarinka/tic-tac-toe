@@ -62,11 +62,10 @@ function adjustBoardArray() {
         else {board.grid.splice(8, 1, 8);}
 }
 
-
-const Player = (signature) => {
+const Player = (XorO) => {
     const move = num => {
         if (board.grid.at(num) == num) {
-            board.grid.splice(num, 1, signature);
+            board.grid.splice(num, 1, XorO);
             markUpGameBoard();
         } else {
             return
@@ -85,39 +84,39 @@ const xPlayer = Player("X");
 //etc.
 
 function checkWinner() {
-    if (cell0.textContent && cell1.textContent && cell2.textContent == "X") {
+    if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell3.textContent && cell4.textContent && cell5.textContent == "X") {
+    } else if (cell3.textContent == "X" && cell4.textContent == "X" && cell5.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell6.textContent && cell7.textContent && cell8.textContent == "X") {
+    } else if (cell6.textContent == "X" && cell7.textContent == "X" && cell8.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell0.textContent && cell3.textContent && cell6.textContent == "X") {
+    } else if (cell0.textContent == "X" && cell3.textContent == "X" && cell6.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell1.textContent && cell4.textContent && cell7.textContent == "X") {
+    } else if (cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell2.textContent && cell5.textContent && cell8.textContent == "X") {
+    } else if (cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell0.textContent && cell4.textContent && cell8.textContent == "X") {
+    } else if (cell0.textContent == "X" && cell4.textContent == "X" && cell8.textContent == "X") {
         console.log("PlayerX wins!");
-    } else if (cell6.textContent && cell4.textContent && cell2.textContent == "X") {
+    } else if (cell6.textContent == "X" && cell4.textContent == "X" && cell2.textContent == "X") {
         console.log("PlayerX wins!");
     }
 
-    if (cell0.textContent && cell1.textContent && cell2.textContent == "O") {
+    if (cell0.textContent == "O" && cell1.textContent == "O" && cell2.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell3.textContent && cell4.textContent && cell5.textContent == "O") {
+    } else if (cell3.textContent == "O" && cell4.textContent == "O" && cell5.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell6.textContent && cell7.textContent && cell8.textContent == "O") {
+    } else if (cell6.textContent == "O" && cell7.textContent == "O" && cell8.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell0.textContent && cell3.textContent && cell6.textContent == "O") {
+    } else if (cell0.textContent == "O" && cell3.textContent == "O" && cell6.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell1.textContent && cell4.textContent && cell7.textContent == "O") {
+    } else if (cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell2.textContent && cell5.textContent && cell8.textContent == "O") {
+    } else if (cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell0.textContent && cell4.textContent && cell8.textContent == "O") {
+    } else if (cell0.textContent == "O" && cell4.textContent == "O" && cell8.textContent == "O") {
         console.log("PlayerO wins!");
-    } else if (cell6.textContent && cell4.textContent && cell2.textContent == "O") {
+    } else if (cell6.textContent == "O" && cell4.textContent == "O" && cell2.textContent == "O") {
         console.log("PlayerO wins!");
     }
 }
