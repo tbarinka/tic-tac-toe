@@ -24,6 +24,17 @@ container {
     justify-content: center;
     align-items: center;
 }
+#winner-info {
+    position: absolute;
+    width: auto;
+    font-size: 80px;
+    border: solid black;
+    padding: 30px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    visibility: hidden;
+}
 #reset {
-    
+
 }
