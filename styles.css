@@ -24,13 +24,6 @@ container {
     justify-content: center;
     align-items: center;
 }
-#score-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#score-card > div {
-    display: flex;
-    gap: 30px;
+#reset {
+    
 }

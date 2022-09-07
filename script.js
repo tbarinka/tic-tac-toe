@@ -12,6 +12,7 @@ const cell7 = document.getElementById("cell-7");
 const cell8 = document.getElementById("cell-8");
 
 const turnInfo = document.getElementById("turn-info");
+const reset = document.getElementById("reset");
 
 const board = (() => {
     const grid = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -33,6 +34,12 @@ function markUpGameBoard() {
     if (typeof board.grid.at(8) !=="number") {cell8.textContent = board.grid.at(8);}
 } markUpGameBoard();
 
+function resetBoard() {
+    cells.forEach(cell => {
+        cell.textContent = "";
+        adjustBoardArray();
+    })
+}
 //this function makes index values of board.grid mirror board in browser
 function adjustBoardArray() {
     if (cell0.textContent == "X") {board.grid.splice(0, 1, cell0.textContent);}
@@ -150,3 +157,7 @@ function oMove() {
         } 
     }); 
 }
+
+
+reset.addEventListener('click', resetBoard);
+
