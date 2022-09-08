@@ -16,22 +16,22 @@ const turnInfo = document.getElementById("turn-info");
 const reset = document.getElementById("reset");
 
 
-//flow control module
+
 
 
 //board module
 const board = (() => {
     const grid = ["", "", "", "", "", "", "", "", ""];
     const markUpBoard = () => {
-        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0);}
-        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1);}
-        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2);}
-        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3);}
-        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4);}
-        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5);}
-        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6);}
-        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7);}
-        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8);}
+        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black";}
+        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black";}
+        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black";}
+        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3); cell3.style.color = "black";}
+        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4); cell4.style.color = "black";}
+        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5); cell5.style.color = "black";}
+        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6); cell6.style.color = "black";}
+        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7); cell7.style.color = "black";}
+        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8); cell8.style.color = "black";}
     }
     return {
         grid, markUpBoard,
@@ -62,25 +62,91 @@ function checkOMarker(marker) {
     return marker == ("O");
 }
 
+function checkWinner() {
+    if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell3.textContent == "X" && cell4.textContent == "X" && cell5.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell6.textContent == "X" && cell7.textContent == "X" && cell8.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell0.textContent == "X" && cell3.textContent == "X" && cell6.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell0.textContent == "X" && cell4.textContent == "X" && cell8.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell6.textContent == "X" && cell4.textContent == "X" && cell2.textContent == "X") {
+        winnerInfo.textContent = "Player X wins!";
+        winnerInfo.style.visibility = 'visible';
+    }
+
+    if (cell0.textContent == "O" && cell1.textContent == "O" && cell2.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell3.textContent == "O" && cell4.textContent == "O" && cell5.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell6.textContent == "O" && cell7.textContent == "O" && cell8.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell0.textContent == "O" && cell3.textContent == "O" && cell6.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell0.textContent == "O" && cell4.textContent == "O" && cell8.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    } else if (cell6.textContent == "O" && cell4.textContent == "O" && cell2.textContent == "O") {
+        winnerInfo.textContent = "Player O wins!";
+        winnerInfo.style.visibility = 'visible';
+    }
+}
+
 const controller = (() => {
     const checkWhoseTurn = () => {
         if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
-            let m = prompt("Pick your O move.");
             oPlayer.move(m);
             board.markUpBoard();
+            checkWinner()
         } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
-            let m = prompt("Pick your X move.");
             xPlayer.move(m);
             board.markUpBoard();
+            checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
-            let m = prompt("Pick your O move.");
             oPlayer.move(m);
             board.markUpBoard();
+            checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
-            let m = prompt("Pick your X move.");
             xPlayer.move(m);
             board.markUpBoard();
+            checkWinner()
         }
     }
     return {checkWhoseTurn}
 })();
+
+let m;
+cells.forEach(cell => {
+        cell.addEventListener('click', function() {
+            if ((cell.textContent !== "O") && (cell.textContent !== "X")) {
+                m = cell.textContent;
+                controller.checkWhoseTurn();
+            }
+        });
+}); 
+
+
