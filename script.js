@@ -62,81 +62,78 @@ function checkOMarker(marker) {
     return marker == ("O");
 }
 
-function checkWinner() {
-    if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell3.textContent == "X" && cell4.textContent == "X" && cell5.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell6.textContent == "X" && cell7.textContent == "X" && cell8.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell0.textContent == "X" && cell3.textContent == "X" && cell6.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell0.textContent == "X" && cell4.textContent == "X" && cell8.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell6.textContent == "X" && cell4.textContent == "X" && cell2.textContent == "X") {
-        winnerInfo.textContent = "Player X wins!";
-        winnerInfo.style.visibility = 'visible';
-    }
-
-    if (cell0.textContent == "O" && cell1.textContent == "O" && cell2.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell3.textContent == "O" && cell4.textContent == "O" && cell5.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell6.textContent == "O" && cell7.textContent == "O" && cell8.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell0.textContent == "O" && cell3.textContent == "O" && cell6.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell0.textContent == "O" && cell4.textContent == "O" && cell8.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    } else if (cell6.textContent == "O" && cell4.textContent == "O" && cell2.textContent == "O") {
-        winnerInfo.textContent = "Player O wins!";
-        winnerInfo.style.visibility = 'visible';
-    }
-}
-
 const controller = (() => {
+    const checkWinner = () => {
+        if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell3.textContent == "X" && cell4.textContent == "X" && cell5.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell6.textContent == "X" && cell7.textContent == "X" && cell8.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell0.textContent == "X" && cell3.textContent == "X" && cell6.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell0.textContent == "X" && cell4.textContent == "X" && cell8.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell6.textContent == "X" && cell4.textContent == "X" && cell2.textContent == "X") {
+            winnerInfo.textContent = "Player X wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell0.textContent == "O" && cell1.textContent == "O" && cell2.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell3.textContent == "O" && cell4.textContent == "O" && cell5.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell6.textContent == "O" && cell7.textContent == "O" && cell8.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell0.textContent == "O" && cell3.textContent == "O" && cell6.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell0.textContent == "O" && cell4.textContent == "O" && cell8.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        } else if (cell6.textContent == "O" && cell4.textContent == "O" && cell2.textContent == "O") {
+            winnerInfo.textContent = "Player O wins!";
+            winnerInfo.style.visibility = 'visible';
+        }
+    }
     const checkWhoseTurn = () => {
         if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             oPlayer.move(m);
             board.markUpBoard();
-            checkWinner()
+            controller.checkWinner()
         } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
             xPlayer.move(m);
             board.markUpBoard();
-            checkWinner()
+            controller.checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
             oPlayer.move(m);
             board.markUpBoard();
-            checkWinner()
+            controller.checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             xPlayer.move(m);
             board.markUpBoard();
-            checkWinner()
+            controller.checkWinner()
         }
     }
-    return {checkWhoseTurn}
+    return {checkWhoseTurn, checkWinner}
 })();
 
 let m;
