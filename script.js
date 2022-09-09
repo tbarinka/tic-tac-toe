@@ -20,20 +20,8 @@ const reset = document.getElementById("reset");
 //board module
 const board = (() => {
     const grid = ["", "", "", "", "", "", "", "", ""];
-    const markUpBoard = () => {
-  
-        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black"; cell0.style.fontSize = "125px";}
-        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black"; cell1.style.fontSize = "125px";}
-        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black"; cell2.style.fontSize = "125px";}
-        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3); cell3.style.color = "black"; cell3.style.fontSize = "125px";}
-        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4); cell4.style.color = "black"; cell4.style.fontSize = "125px";}
-        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5); cell5.style.color = "black"; cell5.style.fontSize = "125px";}
-        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6); cell6.style.color = "black"; cell6.style.fontSize = "125px";}
-        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7); cell7.style.color = "black"; cell7.style.fontSize = "125px";}
-        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8); cell8.style.color = "black"; cell8.style.fontSize = "125px";}
-    }
     return {
-        grid, markUpBoard,
+        grid
     };
 })();
 
@@ -62,7 +50,25 @@ const controller = (() => {
     function checkOMarker(marker) {
         return marker == ("O");
     }
-
+    const checkWhoseTurn = () => {
+        if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
+            oPlayer.move(m);
+            markUpBoard();
+            checkWinner()
+        } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
+            xPlayer.move(m);
+            markUpBoard();
+            checkWinner()
+        } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
+            oPlayer.move(m);
+            markUpBoard();
+            checkWinner()
+        } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
+            xPlayer.move(m);
+            markUpBoard();
+            checkWinner()
+        }
+    }
     function checkWinner () {
         if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
             winnerInfo.textContent = "Player X wins!";
@@ -117,24 +123,16 @@ const controller = (() => {
             winnerInfo.style.visibility = 'visible';
         }
     }
-    const checkWhoseTurn = () => {
-        if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
-            oPlayer.move(m);
-            board.markUpBoard();
-            checkWinner()
-        } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
-            xPlayer.move(m);
-            board.markUpBoard();
-            checkWinner()
-        } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
-            oPlayer.move(m);
-            board.markUpBoard();
-            checkWinner()
-        } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
-            xPlayer.move(m);
-            board.markUpBoard();
-            checkWinner()
-        }
+    const markUpBoard = () => {
+        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black"; cell0.style.fontSize = "125px";}
+        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black"; cell1.style.fontSize = "125px";}
+        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black"; cell2.style.fontSize = "125px";}
+        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3); cell3.style.color = "black"; cell3.style.fontSize = "125px";}
+        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4); cell4.style.color = "black"; cell4.style.fontSize = "125px";}
+        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5); cell5.style.color = "black"; cell5.style.fontSize = "125px";}
+        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6); cell6.style.color = "black"; cell6.style.fontSize = "125px";}
+        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7); cell7.style.color = "black"; cell7.style.fontSize = "125px";}
+        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8); cell8.style.color = "black"; cell8.style.fontSize = "125px";}
     }
     const resetBoard = () => {
         let n = 0;
