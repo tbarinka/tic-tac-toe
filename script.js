@@ -23,15 +23,15 @@ const reset = document.getElementById("reset");
 const board = (() => {
     const grid = ["", "", "", "", "", "", "", "", ""];
     const markUpBoard = () => {
-        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black";}
-        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black";}
-        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black";}
-        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3); cell3.style.color = "black";}
-        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4); cell4.style.color = "black";}
-        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5); cell5.style.color = "black";}
-        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6); cell6.style.color = "black";}
-        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7); cell7.style.color = "black";}
-        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8); cell8.style.color = "black";}
+        if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black"; cell0.style.fontSize = "125px";}
+        if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black"; cell1.style.fontSize = "125px";}
+        if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black"; cell2.style.fontSize = "125px";}
+        if (board.grid.at(3) !== "") {cell3.textContent = board.grid.at(3); cell3.style.color = "black"; cell3.style.fontSize = "125px";}
+        if (board.grid.at(4) !== "") {cell4.textContent = board.grid.at(4); cell4.style.color = "black"; cell4.style.fontSize = "125px";}
+        if (board.grid.at(5) !== "") {cell5.textContent = board.grid.at(5); cell5.style.color = "black"; cell5.style.fontSize = "125px";}
+        if (board.grid.at(6) !== "") {cell6.textContent = board.grid.at(6); cell6.style.color = "black"; cell6.style.fontSize = "125px";}
+        if (board.grid.at(7) !== "") {cell7.textContent = board.grid.at(7); cell7.style.color = "black"; cell7.style.fontSize = "125px";}
+        if (board.grid.at(8) !== "") {cell8.textContent = board.grid.at(8); cell8.style.color = "black"; cell8.style.fontSize = "125px";}
     }
     return {
         grid, markUpBoard,
@@ -44,25 +44,26 @@ const Player = (marker) => {
         let name = string;
         return name;
     }
-    const mark = marker;
     const move = (n) => {
         board.grid.splice(n, 1, marker);
     }
 
-    return {name, mark, move}
+    return {name, move}
 }
 const oPlayer = Player("O");
 const xPlayer = Player("X");
 
 //controller object with its subsidiary functions
-function checkXMarker(marker) {
-    return marker == ("X");
-}
-function checkOMarker(marker) {
-    return marker == ("O");
-}
 
 const controller = (() => {
+
+    function checkXMarker(marker) {
+        return marker == ("X");
+    }
+    function checkOMarker(marker) {
+        return marker == ("O");
+    }
+
     const checkWinner = () => {
         if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
             winnerInfo.textContent = "Player X wins!";
@@ -112,6 +113,9 @@ const controller = (() => {
         } else if (cell6.textContent == "O" && cell4.textContent == "O" && cell2.textContent == "O") {
             winnerInfo.textContent = "Player O wins!";
             winnerInfo.style.visibility = 'visible';
+        } else if (board.grid.filter(index => index.length == 1).length == 9) {
+            winnerInfo.textContent = "Draw!";
+            winnerInfo.style.visibility = 'visible';
         }
     }
     const checkWhoseTurn = () => {
@@ -146,4 +150,18 @@ cells.forEach(cell => {
         });
 }); 
 
+function resetBoard() {
+    
+    let n = 0;
+    cells.forEach(cell => {
+        cell.textContent = n;
+        n++;
+        cell.style.color = "white";
+        cell.style.fontSize = "1px";
+    });
+      
+    board.grid = ["", "", "", "", "", "", "", "", ""];
+    winnerInfo.style.visibility = 'hidden';
+}
+reset.addEventListener('click', resetBoard);
 
