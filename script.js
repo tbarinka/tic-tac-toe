@@ -14,9 +14,6 @@ const cell8 = document.getElementById("cell-8");
 const winnerInfo = document.getElementById("winner-info")
 const turnInfo = document.getElementById("turn-info");
 const reset = document.getElementById("reset");
-const submit1 = document.getElementById("submit1-btn");
-const submit2 = document.getElementById(("submit2-btn");
-
 
 
 //board module
@@ -42,8 +39,7 @@ const Player = (marker) => {
 const oPlayer = Player("O");
 const xPlayer = Player("X");
 
-//controller object with its subsidiary functions
-
+//controller module governs flow of the game
 const controller = (() => {
 
     function checkXMarker(marker) {
@@ -53,22 +49,29 @@ const controller = (() => {
         return marker == ("O");
     }
     const checkWhoseTurn = () => {
-        if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
+        
+        if (winnerInfo.style.visibility == 'visible') {
+            return
+        } else if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             oPlayer.move(m);
             markUpBoard();
-            checkWinner()
+            checkWinner();
+            turnInfo.textContent = "Player X's Turn";
         } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
             xPlayer.move(m);
             markUpBoard();
-            checkWinner()
+            checkWinner();
+            turnInfo.textContent = "Player O's Turn";
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
             oPlayer.move(m);
             markUpBoard();
-            checkWinner()
+            checkWinner();
+            turnInfo.textContent = "Player X's Turn";
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             xPlayer.move(m);
             markUpBoard();
-            checkWinner()
+            checkWinner();
+            turnInfo.textContent = "Player O's Turn";
         }
     }
     function checkWinner () {
@@ -150,6 +153,7 @@ const controller = (() => {
     return {checkWhoseTurn, resetBoard}
 })();
 
+//event listener lets player click on squares to make move
 let m;
 cells.forEach(cell => {
         cell.addEventListener('click', function() {
@@ -159,5 +163,9 @@ cells.forEach(cell => {
             }
         });
 }); 
+
+//reset game button
 reset.addEventListener('click', controller.resetBoard);
+
+
 
