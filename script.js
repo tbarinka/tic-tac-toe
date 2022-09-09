@@ -14,6 +14,8 @@ const cell8 = document.getElementById("cell-8");
 const winnerInfo = document.getElementById("winner-info")
 const turnInfo = document.getElementById("turn-info");
 const reset = document.getElementById("reset");
+const submit1 = document.getElementById("submit1-btn");
+const submit2 = document.getElementById(("submit2-btn");
 
 
 
