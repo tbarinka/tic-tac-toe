@@ -17,12 +17,11 @@ const reset = document.getElementById("reset");
 
 
 
-
-
 //board module
 const board = (() => {
     const grid = ["", "", "", "", "", "", "", "", ""];
     const markUpBoard = () => {
+  
         if (board.grid.at(0) !== "") {cell0.textContent = board.grid.at(0); cell0.style.color = "black"; cell0.style.fontSize = "125px";}
         if (board.grid.at(1) !== "") {cell1.textContent = board.grid.at(1); cell1.style.color = "black"; cell1.style.fontSize = "125px";}
         if (board.grid.at(2) !== "") {cell2.textContent = board.grid.at(2); cell2.style.color = "black"; cell2.style.fontSize = "125px";}
@@ -64,7 +63,7 @@ const controller = (() => {
         return marker == ("O");
     }
 
-    const checkWinner = () => {
+    function checkWinner () {
         if (cell0.textContent == "X" && cell1.textContent == "X" && cell2.textContent == "X") {
             winnerInfo.textContent = "Player X wins!";
             winnerInfo.style.visibility = 'visible';
@@ -122,22 +121,33 @@ const controller = (() => {
         if ((board.grid.filter(checkXMarker).length % 2 == 0) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             oPlayer.move(m);
             board.markUpBoard();
-            controller.checkWinner()
+            checkWinner()
         } else if (board.grid.filter(checkXMarker).length % 2 == 0) {
             xPlayer.move(m);
             board.markUpBoard();
-            controller.checkWinner()
+            checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 0)) {
             oPlayer.move(m);
             board.markUpBoard();
-            controller.checkWinner()
+            checkWinner()
         } else if ((board.grid.filter(checkXMarker).length % 2 == 1) && (board.grid.filter(checkOMarker).length % 2 == 1)) {
             xPlayer.move(m);
             board.markUpBoard();
-            controller.checkWinner()
+            checkWinner()
         }
     }
-    return {checkWhoseTurn, checkWinner}
+    const resetBoard = () => {
+        let n = 0;
+        cells.forEach(cell => {
+            cell.textContent = n;
+            n++;
+            cell.style.color = "white";
+            cell.style.fontSize = "1px";
+        });
+        board.grid = ["", "", "", "", "", "", "", "", ""];
+        winnerInfo.style.visibility = 'hidden';
+    }
+    return {checkWhoseTurn, resetBoard}
 })();
 
 let m;
@@ -149,19 +159,5 @@ cells.forEach(cell => {
             }
         });
 }); 
-
-function resetBoard() {
-    
-    let n = 0;
-    cells.forEach(cell => {
-        cell.textContent = n;
-        n++;
-        cell.style.color = "white";
-        cell.style.fontSize = "1px";
-    });
-      
-    board.grid = ["", "", "", "", "", "", "", "", ""];
-    winnerInfo.style.visibility = 'hidden';
-}
-reset.addEventListener('click', resetBoard);
+reset.addEventListener('click', controller.resetBoard);
 
